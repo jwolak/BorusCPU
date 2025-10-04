@@ -28,5 +28,4 @@ DATE = "15:44:11  October 04, 2025"
 
 # Revisions
 
-PROJECT_REVISION = "top"
 PROJECT_REVISION = "borus_cpu"
