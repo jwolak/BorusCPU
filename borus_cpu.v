@@ -10,6 +10,7 @@ module borus_cpu (
     wire [7:0] out_data;
     wire halted;
 
+    /* Connect CPU output port to out_data wire */
     BorusCpuCore cpu_inst (
         .clk(clk),
         .rst(rst),
@@ -17,6 +18,7 @@ module borus_cpu (
         .halted(halted)
     );
 
+    /* Connect CPU output to LEDs */
     assign leds = out_data;
 
 endmodule
