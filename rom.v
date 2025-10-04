@@ -17,7 +17,7 @@ module rom (
     * Program: 
     * LOAD A, 0x03
     * LOAD B, 0x11
-    * ADD
+    * SUB
     * STORE to output
     * HLT
     */
