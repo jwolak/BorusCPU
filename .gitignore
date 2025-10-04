@@ -55,7 +55,7 @@ dkms.conf
 *.dwo
 
 db/*.*
-incremental_db/*.*
-output_files/*.*
-simulation/*.*
+incremental_db/
+output_files/
+simulation/
 top.qws
