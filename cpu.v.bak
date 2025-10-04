@@ -1,0 +1,61 @@
+module cpu (
+    input wire clk,
+    input wire reset,
+    output reg [7:0] out
+);
+
+    reg [7:0] pc;          // Program Counter
+    reg [7:0] acc;         // Akumulator
+    reg [7:0] ir;          // Instruction Register
+    reg [7:0] mem_data;
+    reg [1:0] state;
+
+    wire [7:0] rom_out;
+    reg [7:0] ram [0:255];
+
+    // ROM z programem
+    rom rom_inst (
+        .addr(pc),
+        .data(rom_out)
+    );
+
+    localparam FETCH = 2'b00,
+               DECODE = 2'b01,
+               EXECUTE = 2'b10;
+
+    always @(posedge clk or posedge reset) begin
+        if (reset) begin
+            pc <= 0;
+            acc <= 0;
+            state <= FETCH;
+        end else begin
+            case (state)
+                FETCH: begin
+                    ir <= rom_out;
+                    state <= DECODE;
+                end
+
+                DECODE: begin
+                    state <= EXECUTE;
+                end
+
+                EXECUTE: begin
+                    case (ir[7:4])  // 4-bit opcode
+                        4'h0: acc <= rom_out;             // LOAD immediate
+                        4'h1: acc <= ram[rom_out];        // LOAD from memory
+                        4'h2: ram[rom_out] <= acc;        // STORE
+                        4'h3: acc <= acc + ram[rom_out];  // ADD
+                        4'h4: acc <= acc - ram[rom_out];  // SUB
+                        4'h5: pc <= rom_out;              // JMP
+                        4'h6: if (acc == 0) pc <= rom_out;// JZ
+                        4'hF: $stop;                      // HLT (stop simulation)
+                    endcase
+                    pc <= pc + 1;
+                    out <= acc;
+                    state <= FETCH;
+                end
+            endcase
+        end
+    end
+
+endmodule
