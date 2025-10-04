@@ -24,7 +24,7 @@ module rom (
     initial begin             //                    |OPER|DATA|
           mem[8'h00] = 8'h03; // LOAD A, 0x03       [0000 0011]
           mem[8'h01] = 8'h11; // LOAD B, 0x11       [0001 0001]
-          mem[8'h02] = 8'h30; // ADD     0x30       [0011 0000]
+          mem[8'h02] = 8'h30; // SUB     0x30       [0011 0000]
           mem[8'h03] = 8'h60; // STORE   0x60       [0110 0000]
           mem[8'h04] = 8'hf0; // HLT     0xf0       [1111 0000]
     end
