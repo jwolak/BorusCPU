@@ -21,11 +21,11 @@
 See: rom.v
 
                                               |OPER|DATA|
-    mem[8'h00] = 8'h03; // LOAD A, 0x03       [0000 0011]
-    mem[8'h01] = 8'h11; // LOAD B, 0x11       [0001 0001]
-    mem[8'h02] = 8'h30; // SUB     0x30       [0011 0000]
-    mem[8'h03] = 8'h60; // STORE   0x60       [0110 0000]
-    mem[8'h04] = 8'hf0; // HLT     0xf0       [1111 0000]
+    mem[8'h00] = 8'h03; // LOAD A, 0x03       [0000 0011] => b'00000001 => h'3
+    mem[8'h01] = 8'h11; // LOAD B, 0x11       [0001 0001] => b'00010001 => h'11
+    mem[8'h02] = 8'h30; // SUB     0x30       [0011 0000] => b'00110000 => h'30
+    mem[8'h03] = 8'h60; // STORE   0x60       [0110 0000] => b'01100000 => h'60
+    mem[8'h04] = 8'hf0; // HLT     0xf0       [1111 0000] => b'11110000 => h'f0
 
     Program steps: 
     Load value 3 to register A
@@ -35,6 +35,21 @@ See: rom.v
     Halt program execution
 
 ```
+
+### Output Results
+
+#### ADD Operation
+![ADD Operation Result](photos/outpu_result_add.jpeg)
+
+*LEDs showing the result of addition operation (3 + 1 = 4) displayed in binary*
+
+#### SUB Operation  
+![SUB Operation Result](photos/outpu_result_sub.jpeg)
+
+*LEDs showing the result of subtraction operation (3 - 1 = 2) displayed in binary*
+
+
+
 ## Evironment
 ```
 Software:
@@ -43,6 +58,8 @@ Quartus Prime 22.1std Build 915 10/25/2022 SC Lite Edition
 Hardware:
 DE0-Nano FPGA Development and Education Kit [https://www.terasic.com.tw/cgi-bin/page/archive.pl?No=593]
 Cyclone® IV EP4CE22F17C6N FPGA
+
+
 
 ```
 ## License
