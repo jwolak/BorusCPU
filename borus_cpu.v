@@ -10,7 +10,7 @@ module borus_cpu (
     wire [7:0] out_data;
     wire halted;
 
-    cpu cpu_inst (
+    BorusCpuCore cpu_inst (
         .clk(clk),
         .rst(rst),
         .out_port(out_data),
