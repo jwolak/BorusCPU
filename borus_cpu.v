@@ -1,4 +1,4 @@
-module top (
+module borus_cpu (
     input clk_50,
     input rst_n,
     output [7:0] leds
