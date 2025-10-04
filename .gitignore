@@ -53,3 +53,11 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+db/
+incremental_db/
+output_files/
+simulation/
+*.qws
+.qsys_edit/
+*.bak
