@@ -11,13 +11,13 @@ module BorusCpuCore (
     wire [7:0] current_instruction;     // Current instruction
     wire [7:0] operand;                 // Current operand
 
-    wire [7:0] rom_data;   // ROM data output wire
+    wire [7:0] rom_data;                // ROM data output wire
 
     /* Create ROM instance
     *  Connect program_counter to addr input of ROM (current instruction address)
     *  Connect data output of ROM to rom_data wire (current instruction data)
     */
-    rom progmem (
+    rom program_memory (
         .addr(program_counter),
         .data(rom_data)
     );
